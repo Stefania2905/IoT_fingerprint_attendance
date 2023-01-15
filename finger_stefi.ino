@@ -98,8 +98,7 @@ if (buttonState == HIGH) {
           lcd.print("Added ID: ");
           lcd.print(fps.getEnrollCount()-1);
 
-             // Serial.print("Add Finger Success ID: ");
-             // Serial.println(fps.getEnrollCount()-1);
+            
         }
         else
         {
@@ -133,17 +132,9 @@ void checkPush()
           Serial.print("EnrollCount FAIL: ");
           Serial.println(fingerPrintCount);
         }
-      } /*else if (check == '2') {
-        uint16_t State = FingerPrintEnrollment();
-        if (State == NO_ERROR) {
-          Serial.print("Add Finger Success ID: ");
-          Serial.println(fps.getEnrollCount() - 1);
-        } else {
-          Serial.print("Add Finger Fail ERROR: ");
-          Serial.println(State);
-        }
-
-      }*/ else if (check == '2') {
+      } 
+     
+     else if (check == '2') {
         uint16_t openStatus = fps.open(true);
         if (openStatus == NO_ERROR) {
           uint16_t checkLED = fps.cmosLed(true);
@@ -192,11 +183,7 @@ void checkPush()
           Serial.print("-Delete Failed: ");
           Serial.println(State, HEX);
         }
-      } /*else {
-        Serial.print(check);
-        Serial.println("-Option Invalid");
-        menu_1();
-      }*/
+      } 
     }
   }
 
@@ -223,9 +210,6 @@ void loop()
  auto epochTime = timeClient.getEpochTime();
 
 String formattedDate = timeClient.getFormattedTime();
-//Serial.print("Formatted Date: ");
-//Serial.println(formattedDate);  
-
 
 int currentHour = timeClient.getHours();
 int currentMinute = timeClient.getMinutes();
@@ -281,13 +265,6 @@ delay(3000);
               }
 
             }
-
-             /*else{
-                  lcd.clear();
-                  lcd.print("Unknown finger");
-                  lcd.setCursor(0,1);
-                  lcd.print("Press enrollment btn");
-            }*/ 
        
           }
       
@@ -299,12 +276,7 @@ delay(3000);
         Serial.println(checkLED,HEX);
       }
     }
-    /*else
-    {
-      Serial.print("Initialization failed!\nstatus: ");
-      Serial.print(openStatus, HEX);
-      Serial.println();
-    }*/
+   
     fps.cmosLed(false);
  
 }
